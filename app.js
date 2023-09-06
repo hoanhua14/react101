@@ -2,8 +2,29 @@
 const {useState} = React
 
 const GroceryItem = (props) => {
+    const [status, setStatus] = useState(false);
+    const styleChange = {
+        textDecoration: status ? 'line-through' : 'none',
+        cursor: 'pointer',
+    }
+    const handleClick = () => {
+        setStatus(!status);
+        console.log(status);
+    };
+    const onMouseEnter = (e) => {
+        e.target.style.fontWeight = 'bold';
+    };
+
+    const onMouseLeave = (e) => {
+        e.target.style.fontWeight = 'normal';
+    }
     return(
-        <li>{props.groceryItem}</li>
+        <li
+            onClick={handleClick}
+            style={styleChange}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+            >{props.groceryItem}</li>
     )
 };
 
