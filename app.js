@@ -1,23 +1,19 @@
 // TODO
 const {useState} = React
+
+const GroceryItem = (props) => {
+    return(
+        <li>{props.groceryItem}</li>
+    )
+};
+
 const GroceryList = (props) => {
-
-    const [status, setStatus] = useState(false);
-
-    const styleChange = {
-        'text-decoration': status ? 'line-through' : 'none',
-    }
-
-    const onListItemClick = () => {
-        setStatus(!status);
-        console.log(status);
-
-    }
-
+    console.log(props.groceryItems)
     return (
         <ul>
-            <li onClick={onListItemClick} style={styleChange}>{props.groceryItems[0]}</li>
-            <li>{props.groceryItems[1]}</li>
+            {props.groceryItems.map((groceryItem) =>
+                <GroceryItem groceryItem={groceryItem}/>
+            )}
 
         </ul>
     )
