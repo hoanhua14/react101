@@ -15,7 +15,7 @@ function App() {
     <div>
       <Header />
       <main>
-        <h2>Time to get started!!!</h2>
+        <h2>Testing git repo</h2>
       </main>
     </div>
   );
