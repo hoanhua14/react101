@@ -1,27 +1,27 @@
-const subText = ["Core", "Crucial", "Fundamental"];
-function picker(max) {
-  return Math.floor(Math.random() * (max + 1));
-}
-
-function Header() {
-  const word = subText[picker(2)];
-  return (
-    <header>
-      <img src="src/assets/react-core-concepts.png" alt="Stylized atom" />
-      <h1>React Essentials</h1>
-      <p>
-        {word} React concepts you will need for almost any app you are going to
-        build!
-      </p>
-    </header>
-  );
-}
+import Header from "./components/Header.jsx";
+import CoreConcept from "./components/CoreConcept.jsx";
+import TabButton from "./components/TabButton.jsx";
 function App() {
   return (
     <div>
       <Header />
       <main>
-        <h2>Testing git repo</h2>
+        <section id="core-concepts">
+          <h2>Core concepts</h2>
+          <ul>
+            <CoreConcept />
+          </ul>
+        </section>
+        <section id="examples">
+          <h2>Examples</h2>
+          <menu>
+            <TabButton>Components</TabButton>
+            <TabButton>JSX</TabButton>
+            <TabButton>Props</TabButton>
+            <TabButton>State</TabButton>
+          </menu>
+        </section>
+        <h2>Time to get started!</h2>
       </main>
     </div>
   );
