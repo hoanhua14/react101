@@ -4,9 +4,19 @@ import TabButton from "./components/TabButton.jsx";
 import { useState } from "react";
 import { EXAMPLES } from "./data.js";
 function App() {
-  const [selected, setSelected] = useState("components");
+  const [selected, setSelected] = useState();
   function handleSelect(selected) {
     setSelected(selected);
+  }
+  let tabContent = <>Pls choose something</>;
+  if (selected) {
+    tabContent = (
+      <>
+        <h3>{EXAMPLES[selected].title}</h3>
+        <p>{EXAMPLES[selected].description}</p>
+        <pre>{EXAMPLES[selected].code}</pre>
+      </>
+    );
   }
   return (
     <div>
@@ -28,11 +38,7 @@ function App() {
             <TabButton onSelect={() => handleSelect("props")}>Props</TabButton>
             <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
-          <div id="tab-content">
-            <h3>{EXAMPLES[selected].title}</h3>
-            <p>{EXAMPLES[selected].description}</p>
-            <pre>{EXAMPLES[selected].code}</pre>
-          </div>
+          <div id="tab-content">{tabContent}</div>
         </section>
         <h2>Time to get started!</h2>
       </main>
