@@ -1,17 +1,12 @@
 import { CORE_CONCEPTS } from "../data";
+import CoreConcept from "./CoreConcept";
 export default function CoreConcepts() {
   return (
-    // <div>
-    //   {CORE_CONCEPTS.map((concept) => {
-    //     return (
-    //       <li key={concept.title}>
-    //         <img src={concept.image} alt={concept.title}></img>
-    //         <h1>{concept.title}</h1>
-    //         <p>{concept.description}</p>
-    //       </li>
-    //     );
-    //   })}
-    // </div>
-
+    <section id="core-concepts">
+      <h2>Core concepts</h2>
+      <ul>
+        <CoreConcept />
+      </ul>
+    </section>
   );
 }
