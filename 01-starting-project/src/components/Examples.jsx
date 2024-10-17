@@ -2,6 +2,7 @@ import { useState } from "react";
 import TabButton from "./TabButton";
 import { EXAMPLES } from "../data";
 import Section from "./Section";
+import Tabs from "./Tabs";
 export default function Examples() {
   const [selected, setSelected] = useState();
 
@@ -26,34 +27,40 @@ export default function Examples() {
   };
   return (
     <Section id={"examples"} title={"Examples"}>
-      <menu>
-        <TabButton
-          isSelected={selected === "components"}
-          onClick={() => handleSelect("components")}
-        >
-          Components
-        </TabButton>
-        <TabButton
-          isSelected={selected === "jsx"}
-          onClick={() => handleSelect("jsx")}
-        >
-          JSX
-        </TabButton>
-        <TabButton
-          isSelected={selected === "props"}
-          onClick={() => handleSelect("props")}
-        >
-          Props
-        </TabButton>
-        <TabButton
-          isSelected={selected === "state"}
-          onClick={() => handleSelect("state")}
-        >
-          State
-        </TabButton>
-      </menu>
-
-      {renderText()}
+      <Tabs
+        buttons={
+          <>
+            <menu>
+              <TabButton
+                isSelected={selected === "components"}
+                onClick={() => handleSelect("components")}
+              >
+                Components
+              </TabButton>
+              <TabButton
+                isSelected={selected === "jsx"}
+                onClick={() => handleSelect("jsx")}
+              >
+                JSX
+              </TabButton>
+              <TabButton
+                isSelected={selected === "props"}
+                onClick={() => handleSelect("props")}
+              >
+                Props
+              </TabButton>
+              <TabButton
+                isSelected={selected === "state"}
+                onClick={() => handleSelect("state")}
+              >
+                State
+              </TabButton>
+            </menu>
+          </>
+        }
+      >
+        {renderText()}
+      </Tabs>
     </Section>
   );
 }
