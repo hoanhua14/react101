@@ -52,6 +52,7 @@ export default function Examples() {
             <TabButton
               isSelected={selected === "state"}
               onClick={() => handleSelect("state")}
+              test="test"
             >
               State
             </TabButton>
