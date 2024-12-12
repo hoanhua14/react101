@@ -11,7 +11,6 @@ export default function Player({ initialName, symbol }) {
   };
   const handleNameChange = (e) => {
     setPlayerName(e.target.value);
-    console.log(playerName);
   };
   if (isEditing) {
     editableName = (
