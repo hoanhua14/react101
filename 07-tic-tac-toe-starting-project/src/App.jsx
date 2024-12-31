@@ -4,6 +4,7 @@ import Player from "./components/Player";
 import Log from "./components/Log";
 import { WINNING_COMBINATIONS } from "./winning-comb.js";
 import GameOver from "./components/GameOver.jsx";
+import { use } from "react";
 const initialGameBoard = [
   [null, null, null],
   [null, null, null],
@@ -17,6 +18,7 @@ function deriveActivePlayer(gameTurns) {
   return currentPlayer;
 }
 function App() {
+  const [players, setPlayers] = useState({ X: "Player 1", O: "Player 2" });
   const [gameTurns, setGameTurns] = useState([]);
   function handleRematch() {
     setGameTurns([]);
@@ -35,7 +37,7 @@ function App() {
     const second = gameBoard[comb[1].row][comb[1].column];
     const third = gameBoard[comb[2].row][comb[2].column];
     if (first && first === second && first === third) {
-      winner = first;
+      winner = players[first];
     }
   }
   const hasDraw = gameTurns.length === 9 && !winner;
@@ -49,7 +51,14 @@ function App() {
       return updatedTurns;
     });
   };
-
+  function handlePlayerNameChange(symbol, newName) {
+    setPlayers((prevPlayers) => {
+      return {
+        ...prevPlayers,
+        [symbol]: newName,
+      };
+    });
+  }
   return (
     <main>
       <div id="game-container">
@@ -58,11 +67,13 @@ function App() {
             initialName="Player 1"
             symbol="X"
             isActive={activePlayer === "X"}
+            onChangeName={handlePlayerNameChange}
           />
           <Player
             initialName="Player 2"
             symbol="O"
             isActive={activePlayer === "O"}
+            onChangeName={handlePlayerNameChange}
           />
         </ol>
         {(winner || hasDraw) && (
