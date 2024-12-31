@@ -4,7 +4,10 @@ import Player from "./components/Player";
 import Log from "./components/Log";
 import { WINNING_COMBINATIONS } from "./winning-comb.js";
 import GameOver from "./components/GameOver.jsx";
-import { use } from "react";
+const PLAYERS = {
+  X: "Player 1",
+  O: "Player 2",
+};
 const initialGameBoard = [
   [null, null, null],
   [null, null, null],
@@ -18,28 +21,15 @@ function deriveActivePlayer(gameTurns) {
   return currentPlayer;
 }
 function App() {
-  const [players, setPlayers] = useState({ X: "Player 1", O: "Player 2" });
+  const [players, setPlayers] = useState(PLAYERS);
   const [gameTurns, setGameTurns] = useState([]);
   function handleRematch() {
     setGameTurns([]);
   }
 
   const activePlayer = deriveActivePlayer(gameTurns);
-  let gameBoard = [...initialGameBoard.map((array) => [...array])];
-  for (const turn of gameTurns) {
-    const { square, player } = turn;
-    const { row, col } = square;
-    gameBoard[row][col] = player;
-  }
-  let winner;
-  for (const comb of WINNING_COMBINATIONS) {
-    const first = gameBoard[comb[0].row][comb[0].column];
-    const second = gameBoard[comb[1].row][comb[1].column];
-    const third = gameBoard[comb[2].row][comb[2].column];
-    if (first && first === second && first === third) {
-      winner = players[first];
-    }
-  }
+  const gameBoard = deriveGameBoard(gameTurns);
+  const winner = deriveWinner(gameBoard, players);
   const hasDraw = gameTurns.length === 9 && !winner;
   const handleSelectSquare = (rowIndex, colIndex) => {
     setGameTurns((prevTurns) => {
@@ -51,6 +41,15 @@ function App() {
       return updatedTurns;
     });
   };
+  function deriveGameBoard(gameTurns) {
+    let gameBoard = [...initialGameBoard.map((array) => [...array])];
+    for (const turn of gameTurns) {
+      const { square, player } = turn;
+      const { row, col } = square;
+      gameBoard[row][col] = player;
+    }
+    return gameBoard;
+  }
   function handlePlayerNameChange(symbol, newName) {
     setPlayers((prevPlayers) => {
       return {
@@ -59,18 +58,31 @@ function App() {
       };
     });
   }
+  function deriveWinner(gameBoard, players) {
+    let winner;
+    for (const comb of WINNING_COMBINATIONS) {
+      const first = gameBoard[comb[0].row][comb[0].column];
+      const second = gameBoard[comb[1].row][comb[1].column];
+      const third = gameBoard[comb[2].row][comb[2].column];
+      if (first && first === second && first === third) {
+        winner = players[first];
+      }
+    }
+    return winner;
+  }
+
   return (
     <main>
       <div id="game-container">
         <ol id="players" className="highlight-player">
           <Player
-            initialName="Player 1"
+            initialName={PLAYERS.X}
             symbol="X"
             isActive={activePlayer === "X"}
             onChangeName={handlePlayerNameChange}
           />
           <Player
-            initialName="Player 2"
+            initialName={PLAYERS.O}
             symbol="O"
             isActive={activePlayer === "O"}
             onChangeName={handlePlayerNameChange}
