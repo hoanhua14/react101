@@ -1,4 +1,16 @@
-export default function Result() {
+import { calculateInvestmentResults } from "./investment";
+export default function Result({
+  initialInvestment,
+  annualInvestment,
+  expectedReturn,
+  duration,
+}) {
+  let results = calculateInvestmentResults(
+    initialInvestment,
+    annualInvestment,
+    expectedReturn,
+    duration
+  );
   return (
     <table id="result">
       <thead>
@@ -11,13 +23,15 @@ export default function Result() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        {results.map((eachYear) => (
+          <tr key={eachYear.year}>
+            <td>{eachYear.year}</td>
+            <td>{eachYear.year}</td>
+            <td>{eachYear.interest}</td>
+            <td>{eachYear.valueEndOfYear}</td>
+            <td>{eachYear.annualInvestment}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );

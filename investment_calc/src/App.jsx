@@ -25,26 +25,45 @@ function App() {
   return (
     <>
       <Header />
-      <div id="user-input" className="input-group">
-        <label>initial investment</label>
-        <input
-          value={initialInvestment}
-          onChange={handleInitialInvestmentChange}
-        ></input>
-        <label>annual investment</label>
-        <input
-          value={annualInvestment}
-          onChange={handleAnnualInvestmentChange}
-        ></input>
+      <section id="user-input">
+        <div className="input-group">
+          <p>
+            <label>initial investment</label>
 
-        <label>expected return</label>
-        <input
-          value={expectedReturn}
-          onChange={handleExpectedReturnChange}
-        ></input>
-        <label>duration</label>
-        <input value={duration} onChange={handleDurationChange}></input>
-      </div>
+            <input
+              type="number"
+              value={initialInvestment}
+              onChange={handleInitialInvestmentChange}
+            ></input>
+          </p>
+          <p>
+            <label>annual investment</label>
+            <input
+              type="number"
+              value={annualInvestment}
+              onChange={handleAnnualInvestmentChange}
+            ></input>
+          </p>
+        </div>
+        <div className="input-group">
+          <p>
+            <label>expected return</label>
+            <input
+              type="number"
+              value={expectedReturn}
+              onChange={handleExpectedReturnChange}
+            ></input>
+          </p>
+          <p>
+            <label>duration</label>
+            <input
+              type="number"
+              value={duration}
+              onChange={handleDurationChange}
+            ></input>
+          </p>
+        </div>
+      </section>
       <Result
         initialInvestment={initialInvestment}
         annualInvestment={annualInvestment}
