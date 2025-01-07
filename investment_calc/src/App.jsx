@@ -8,20 +8,17 @@ function App() {
   const [duration, setDuration] = useState("");
   const handleInitialInvestmentChange = (e) => {
     setInitialInvestment(e.target.value);
-    console.log(initialInvestment);
   };
   const handleAnnualInvestmentChange = (e) => {
     setAnnualInvestment(e.target.value);
-    console.log(annualInvestment);
   };
   const handleExpectedReturnChange = (e) => {
     setExpectedReturn(e.target.value);
-    console.log(expectedReturn);
   };
   const handleDurationChange = (e) => {
     setDuration(e.target.value);
-    console.log(duration);
   };
+
   return (
     <>
       <Header />

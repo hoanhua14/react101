@@ -24,7 +24,7 @@ export function calculateInvestmentResults({
     });
   }
 
-  return [{ year: 1, interest: 2, valueEndOfYear: 2, annualInvestment: 4 }];
+  return annualData;
 }
 
 // The browser-provided Intl API is used to prepare a formatter object
