@@ -19,6 +19,7 @@ function App() {
       };
     });
   };
+  const inputIsValid = userInput.duration >= 1;
   console.log(userInput);
   return (
     <>
@@ -28,7 +29,10 @@ function App() {
         setUserInput={setUserInput}
         handleChange={handleChange}
       />
-      <Result inputData={userInput} />
+      {inputIsValid && <Result inputData={userInput} />}
+      {!inputIsValid && (
+        <p className="center">Pleae enter a duration greater than zero</p>
+      )}
     </>
   );
 }
