@@ -10,15 +10,16 @@ function App() {
     expectedReturn: 100000,
     duration: 12,
   });
-  let results = calculateInvestmentResults(userInput);
+  // let results = calculateInvestmentResults(userInput);
   const handleChange = (inputId, newValue) => {
     setUserInput((prevUserInput) => {
       return {
         ...prevUserInput,
-        [inputId]: newValue,
+        [inputId]: +newValue,
       };
     });
   };
+  console.log(userInput);
   return (
     <>
       <Header />
@@ -27,7 +28,7 @@ function App() {
         setUserInput={setUserInput}
         handleChange={handleChange}
       />
-      <Result results={results} />
+      <Result inputData={userInput} />
     </>
   );
 }
