@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "./util/Header";
 import Result from "./util/Result";
 import UserInput from "./util/UserInput";
+import { calculateInvestmentResults } from "./util/investment";
 function App() {
   const [userInput, setUserInput] = useState({
     initialInvestment: 10000,
@@ -9,11 +10,24 @@ function App() {
     expectedReturn: 100000,
     duration: 12,
   });
+  let results = calculateInvestmentResults(userInput);
+  const handleChange = (inputId, newValue) => {
+    setUserInput((prevUserInput) => {
+      return {
+        ...prevUserInput,
+        [inputId]: newValue,
+      };
+    });
+  };
   return (
     <>
       <Header />
-      <UserInput userInput={userInput} setUserInput={setUserInput} />
-      <Result />
+      <UserInput
+        userInput={userInput}
+        setUserInput={setUserInput}
+        handleChange={handleChange}
+      />
+      <Result results={results} />
     </>
   );
 }

@@ -1,17 +1,6 @@
 import Header from "./Header";
 import { calculateInvestmentResults } from "./investment";
-export default function Result({
-  initialInvestment,
-  annualInvestment,
-  expectedReturn,
-  duration,
-}) {
-  let results = calculateInvestmentResults({
-    initialInvestment: initialInvestment,
-    annualInvestment: annualInvestment,
-    expectedReturn: expectedReturn,
-    duration: duration,
-  });
+export default function Result({ results }) {
   return (
     <table id="result">
       <thead>
