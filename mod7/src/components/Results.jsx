@@ -1,9 +1,12 @@
-import { calculateInvestmentResults, formatter } from '../util/investment.js';
-
+import { calculateInvestmentResults, formatter } from "../util/investment.js";
 
 export default function Results({ input }) {
   const results = [];
   calculateInvestmentResults(input, results);
+  // this if statement returns an error message so the below doesn't get executed and return an error
+  if (results.length === 0) {
+    return <p>Invalid</p>;
+  }
   const initialInvestment =
     results[0].valueEndOfYear -
     results[0].interest -
