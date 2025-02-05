@@ -9,6 +9,9 @@ const ResultModal = forwardRef(function ResultModal(
       open() {
         dialog.current.showModal();
       },
+      close() {
+        dialog.current.close();
+      },
     };
   });
   return (
