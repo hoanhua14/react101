@@ -1,7 +1,8 @@
+import Projects from "./components/Projects";
 function App() {
   return (
     <>
-      <h1 className="my-8 text-center text-5xl font-bold">proj demo</h1>
+      <Projects />
     </>
   );
 }
