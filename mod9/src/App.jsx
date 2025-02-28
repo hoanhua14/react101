@@ -1,9 +1,9 @@
 import CreateAProject from "./components/CreateAProject";
-import Projects from "./components/Projects";
+import ProjectSideBar from "./components/ProjectSideBar";
 function App() {
   return (
     <>
-      <Projects />
+      <ProjectSideBar />
       <CreateAProject />
     </>
   );
