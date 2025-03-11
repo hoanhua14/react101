@@ -15,7 +15,6 @@ export default function NewProject() {
         </li>
       </menu>
       <Input name={"Title"} />
-      <Input name={"Description"} isTextArea />
     </div>
   );
 }
