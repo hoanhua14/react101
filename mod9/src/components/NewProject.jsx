@@ -14,7 +14,6 @@ export default function NewProject() {
           </button>
         </li>
       </menu>
-      <Input name={"Title"} />
     </div>
   );
 }
