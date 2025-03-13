@@ -12,11 +12,13 @@ export default function NewProject() {
           <button className="bg-stone-800 text-stone-50 hover:bg-stone-950 px-6 py-2 rounded-md">
             Save
           </button>
-          <Input name={"Title"} />
-          <Input name={"Description"} isTextArea />
-          <Input name={"Due Date"} />
         </li>
       </menu>
+      <div>
+        <Input name={"Title"} />
+        <Input name={"Description"} isTextArea />
+        <Input name={"Due Date"} />
+      </div>
     </div>
   );
 }
